@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { Bell } from 'lucide-react';
 import Image from 'next/image';
 import Button from '../buttons/Button';
+import NMBCard from '../cards/NMBCard';
 
 const SLIDES = [
     {
@@ -128,14 +129,29 @@ export default function Hero() {
                              index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
                         }`}
                     >
-                        <Image 
-                            src={slide.image}
-                            alt={slide.title}
-                            width={600} 
-                            height={700}
-                            className="object-contain drop-shadow-2xl rounded-tr-[5rem] rounded-bl-[5rem] max-h-full w-auto"
-                            priority={index === 0}
-                        />
+                         {index === 0 ? (
+                            <div className="relative w-full h-full perspective-1000">
+                                {/* Card Fan Composition */}
+                                <div className="absolute top-[5%] left-[0%] transform -rotate-12 z-10 w-[300px] h-[190px] sm:w-[420px] sm:h-[265px] transition-transform hover:scale-105 hover:rotate-[-10deg] duration-500">
+                                    <NMBCard title="NMB CLASSIC" subtitle="DEBIT" description="" isActive={true} onClick={()=>{}} type="classic" />
+                                </div>
+                                <div className="absolute top-[18%] left-[15%] transform -rotate-3 z-20 w-[300px] h-[190px] sm:w-[420px] sm:h-[265px] transition-transform hover:scale-105 hover:rotate-[-1deg] duration-500 shadow-xl">
+                                    <NMBCard title="NMB GOLD" subtitle="PREMIUM" description="" isActive={true} onClick={()=>{}} type="gold" />
+                                </div>
+                                <div className="absolute top-[32%] left-[30%] transform rotate-6 z-30 w-[300px] h-[190px] sm:w-[420px] sm:h-[265px] transition-transform hover:scale-105 hover:rotate-[8deg] duration-500 shadow-2xl">
+                                    <NMBCard title="NMB ELITE" subtitle="PLATINUM" description="" isActive={true} onClick={()=>{}} type="platinum" />
+                                </div>
+                            </div>
+                        ) : (
+                            <Image 
+                                src={slide.image}
+                                alt={slide.title}
+                                width={600} 
+                                height={700}
+                                className="object-contain drop-shadow-2xl rounded-tr-[5rem] rounded-bl-[5rem] max-h-full w-auto"
+                                priority={index === 0}
+                            />
+                        )}
                     </div>
                 ))}
              </div>

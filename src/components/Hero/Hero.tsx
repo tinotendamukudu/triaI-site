@@ -21,11 +21,6 @@ const SLIDES = [
         title: "Sustainability & Innovation",
         description: "Highlighting our commitment to sustainability and continuous innovation.",
         image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2576&auto=format&fit=crop"
-    },
-    {
-         title: "We Value You",
-         description: "Offering useful content, financial literacy, and dedicated support.",
-         image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2576&auto=format&fit=crop"
     }
 ];
 
@@ -58,7 +53,7 @@ export default function Hero() {
         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
           
           {/* Left Column: Text & Slider */}
-          <div className="flex-1 w-full max-w-2xl lg:max-w-none space-y-10">
+          <div className="flex-1 w-full max-w-2xl lg:max-w-none space-y-10 lg:pl-12">
             
             {/* Main Static Message */}
             <div className="space-y-6">
@@ -70,7 +65,6 @@ export default function Hero() {
                 <p className="text-xl text-gray-600 font-medium max-w-lg">
                   We can help you change the way you bank. Dial <span className="text-primary font-bold">*241#</span> to get started.
                 </p>
-                
                 <div className="flex gap-4 pt-2">
                      <Button variant="primary">
                         Open Account
@@ -111,9 +105,7 @@ export default function Hero() {
                     />
                 ))}
             </div>
-
           </div>
-
           {/* Right Column: Image & Floating Cards */}
           <div className="flex-1 w-full relative perspective-1000">
              {/* Main Circle Background */}

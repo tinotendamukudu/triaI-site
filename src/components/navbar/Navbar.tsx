@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { 
     Search, 
     ChevronDown, 
@@ -24,6 +24,7 @@ import {
     MessageSquare
 } from 'lucide-react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import Button from '../buttons/Button';
 
@@ -37,32 +38,32 @@ interface NavItemData {
 // Configuration for different tabs
 const NAV_CONFIG: Record<string, NavItemData[]> = {
     personal: [
-         { id: 'accounts', label: 'Accounts', icon: <Wallet className="h-5 w-5" /> },
-         { id: 'cards', label: 'Cards', icon: <CreditCard className="h-5 w-5" /> },
-         { id: 'loans', label: 'Loans', icon: <Banknote className="h-5 w-5" /> },
-         { id: 'insurance', label: 'Insurance', icon: <ShieldCheck className="h-5 w-5" /> },
+         { id: 'accounts', label: 'Accounts', icon: <Wallet className="h-4 w-4" /> },
+         { id: 'cards', label: 'Cards', icon: <CreditCard className="h-4 w-4" /> },
+         { id: 'loans', label: 'Loans', icon: <Banknote className="h-4 w-4" /> },
+         { id: 'insurance', label: 'Insurance', icon: <ShieldCheck className="h-4 w-4" /> },
     ],
     business: [
-        { id: 'sme-banking', label: 'SME Banking', icon: <Briefcase className="h-5 w-5" /> },
-        { id: 'corporate-solutions', label: 'Corporate Solutions', icon: <Building2 className="h-5 w-5" /> },
-        { id: 'pos-merchant', label: 'POS & Merchant Services', icon: <Store className="h-5 w-5" /> },
+        { id: 'sme-banking', label: 'SME Banking', icon: <Briefcase className="h-4 w-4" /> },
+        { id: 'corporate-solutions', label: 'Corporate Solutions', icon: <Building2 className="h-4 w-4" /> },
+        { id: 'pos-merchant', label: 'POS & Merchant Services', icon: <Store className="h-4 w-4" /> },
     ],
     digital: [
-        { id: 'nmbconnect-app', label: 'NMBConnect App', icon: <Smartphone className="h-5 w-5" /> },
-        { id: 'internet-banking', label: 'Internet Banking', icon: <Laptop className="h-5 w-5" /> },
-        { id: 'ussd', label: 'USSD', icon: <Phone className="h-5 w-5" /> },
+        { id: 'nmbconnect-app', label: 'NMBConnect App', icon: <Smartphone className="h-4 w-4" /> },
+        { id: 'internet-banking', label: 'Internet Banking', icon: <Laptop className="h-4 w-4" /> },
+        { id: 'ussd', label: 'USSD', icon: <Phone className="h-4 w-4" /> },
     ],
     investor: [
-        { id: 'current-reports', label: 'Current Reports', icon: <FileText className="h-5 w-5" /> },
-        { id: 'annual-reports', label: 'Annual Reports', icon: <BookOpen className="h-5 w-5" /> },
-        { id: 'exchange-rates', label: 'Exchange Rates', icon: <ArrowRightLeft className="h-5 w-5" /> },
-        { id: 'stocks-trade', label: 'Stocks and Trade (Real Time)', icon: <TrendingUp className="h-5 w-5" /> },
+        { id: 'current-reports', label: 'Current Reports', icon: <FileText className="h-4 w-4" /> },
+        { id: 'annual-reports', label: 'Annual Reports', icon: <BookOpen className="h-4 w-4" /> },
+        { id: 'exchange-rates', label: 'Exchange Rates', icon: <ArrowRightLeft className="h-4 w-4" /> },
+        { id: 'stocks-trade', label: 'Stocks and Trade (Real Time)', icon: <TrendingUp className="h-4 w-4" /> },
     ],
     about: [
-        { id: 'who-we-are', label: 'Who We Are', icon: <Users className="h-5 w-5" /> },
-        { id: 'leadership', label: 'Leadership', icon: <Award className="h-5 w-5" /> },
-        { id: 'careers', label: 'Careers', icon: <Briefcase className="h-5 w-5" /> },
-        { id: 'contact-us', label: 'Contact Us', icon: <MessageSquare className="h-5 w-5" /> },
+        { id: 'who-we-are', label: 'Who We Are', icon: <Users className="h-4 w-4" /> },
+        { id: 'leadership', label: 'Leadership', icon: <Award className="h-4 w-4" /> },
+        { id: 'careers', label: 'Careers', icon: <Briefcase className="h-4 w-4" /> },
+        { id: 'contact-us', label: 'Contact Us', icon: <MessageSquare className="h-4 w-4" /> },
     ]
 };
 
@@ -75,7 +76,16 @@ const TAB_LABELS: Record<string, string> = {
 };
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [activeTab, setActiveTab] = useState<string>('personal');
+
+  useEffect(() => {
+    if (pathname === '/business') {
+        setActiveTab('business');
+    } else if (pathname === '/') {
+        setActiveTab('personal');
+    }
+  }, [pathname]);
 
   return (
     <div className="w-full bg-white font-sans sticky top-0 z-50">
@@ -99,19 +109,37 @@ export default function Navbar() {
 
                         {/* Tabs */}
                         <div className="hidden lg:flex h-20 items-end space-x-8 pb-0">
-                            {Object.keys(NAV_CONFIG).map((tabKey) => (
-                                <button 
-                                    key={tabKey}
-                                    onClick={() => setActiveTab(tabKey)}
-                                    className={`pb-7 pt-1 px-1 font-medium text-sm border-b-[3px] transition-colors ${
-                                        activeTab === tabKey
-                                        ? 'border-primary text-primary' 
-                                        : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-900'
-                                    }`}
-                                >
-                                    {TAB_LABELS[tabKey] || tabKey.charAt(0).toUpperCase() + tabKey.slice(1)}
-                                </button>
-                            ))}
+                            {Object.keys(NAV_CONFIG).map((tabKey) => {
+                                const isActive = activeTab === tabKey;
+                                const className = `pb-7 pt-1 px-1 font-medium text-sm border-b-[3px] transition-colors ${
+                                    isActive
+                                    ? 'border-primary text-primary' 
+                                    : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-900'
+                                }`;
+
+                                if (tabKey === 'personal' || tabKey === 'business') {
+                                    return (
+                                        <Link 
+                                            key={tabKey}
+                                            href={tabKey === 'business' ? '/business' : '/'}
+                                            onClick={() => setActiveTab(tabKey)}
+                                            className={className}
+                                        >
+                                            {TAB_LABELS[tabKey] || tabKey.charAt(0).toUpperCase() + tabKey.slice(1)}
+                                        </Link>
+                                    );
+                                }
+
+                                return (
+                                    <button 
+                                        key={tabKey}
+                                        onClick={() => setActiveTab(tabKey)}
+                                        className={className}
+                                    >
+                                        {TAB_LABELS[tabKey] || tabKey.charAt(0).toUpperCase() + tabKey.slice(1)}
+                                    </button>
+                                );
+                            })}
                         </div>
                     </div>         
 
@@ -135,7 +163,7 @@ export default function Navbar() {
         {/* Bottom Bar - Navigation Items */}
         <div className="bg-gray-50 border-b border-gray-200">
              <div className="max-w-[95%] mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between items-center h-16">
+                <div className="flex justify-between items-center py-2">
                     {/* Dynamic Navigation Links based on activeTab */}
                     <nav className="hidden lg:flex space-x-12">
                         {NAV_CONFIG[activeTab]?.map((item) => (
@@ -145,7 +173,7 @@ export default function Navbar() {
 
                     {/* Action Buttons */}
                     <div className="flex items-center space-x-4">
-                        <Button variant="primary" className="px-6 py-2 text-sm shadow-sm">
+                        <Button variant="primary" className="!px-6 !py-2 text-sm shadow-sm">
                             Get the app
                         </Button>
                     </div>
@@ -158,9 +186,9 @@ export default function Navbar() {
 
 function NavItem({ icon, label }: Readonly<{ icon: React.ReactNode; label: string }>) {
     return (
-        <Link href="#" className="flex items-center gap-3 text-gray-600 hover:text-primary transition-colors">
+        <Link href="#" className="flex items-center gap-2 text-gray-600 hover:text-primary transition-colors">
             <span className="text-gray-500">{icon}</span>
-            <span className="font-medium text-base">{label}</span>
+            <span className="font-medium text-sm">{label}</span>
         </Link>
     );
 }

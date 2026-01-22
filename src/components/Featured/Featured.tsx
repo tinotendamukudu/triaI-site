@@ -87,9 +87,9 @@ export default function Featured() {
   return (
     <section className="py-24 bg-surface overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl md:text-5xl font-bold text-center mb-16 text-gray-900 dark:text-white tracking-tight">
-          Simplified management of your business.
-        </h2>
+        <h3 className="text-2xl md:text-5xl font-bold text-center mb-16 text-gray-800 dark:text-white tracking-tight">
+          Banking for you made easier
+        </h3>
         
         {/* Accordion Cards Container - Flex Row */}
         <div className="flex flex-col md:flex-row gap-4 max-w-5xl mx-auto w-full mb-12 items-start justify-center min-h-[600px]">
@@ -162,7 +162,7 @@ export default function Featured() {
 
         {/* Global Controls - Centered below everything */}
         <div className="flex justify-center mt-4">
-            <div className="flex items-center gap-5 px-6 py-3 rounded-full border border-gray-300/50">
+            <div className="bg-white flex items-center gap-5 px-6 py-3 rounded-full border border-gray-300/50 shadow-sm">
                 {/* Play/Pause */}
                 <button
                     onClick={(e) => {
@@ -189,7 +189,6 @@ export default function Featured() {
                 />
             </div>
         </div>
-
       </div>
     </section>
   );

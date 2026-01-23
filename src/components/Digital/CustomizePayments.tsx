@@ -43,17 +43,17 @@ export default function CustomizePayments() {
 
                         <div className="flex flex-col gap-6">
                             <FeatureRow
-                                icon={<CreditCard className="h-6 w-6 text-teal-600" />}
+                                icon={<CreditCard className="h-6 w-6 text-primary" />}
                                 title="Global Online Acceptance"
                                 description="Your NMB Visa and Mastercards are enabled for secure online purchases at millions of merchants worldwide."
                             />
                             <FeatureRow
-                                icon={<Smartphone className="h-6 w-6 text-orange-500" />}
+                                icon={<Smartphone className="h-6 w-6 text-primary" />}
                                 title="Verified Security"
                                 description="Protected by Verified by Visa and Mastercard SecureCode with OTP authentication for every transaction."
                             />
                             <FeatureRow
-                                icon={<BellRing className="h-6 w-6 text-blue-500" />}
+                                icon={<BellRing className="h-6 w-6 text-primary" />}
                                 title="Instant Transaction Alerts"
                                 description="Receive real-time SMS notifications for all your approved online payments and card activities."
                             />

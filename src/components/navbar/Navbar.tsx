@@ -20,7 +20,8 @@ import {
     TrendingUp,
     Users,
     Award,
-    MessageSquare
+    MessageSquare,
+    Calculator
 } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -76,8 +77,8 @@ const NAV_CONFIG: Record<string, NavItemData[]> = {
 };
 
 const TAB_LABELS: Record<string, string> = {
-    personal: 'Personal',
-    business: 'Business',
+    personal: 'Banking for me',
+    business: 'Business Banking',
     digital: 'Digital Banking',
     investor: 'Investor Relations',
     about: 'About NMB'
@@ -96,6 +97,8 @@ export default function Navbar() {
             setActiveTab('investor');
         } else if (pathname === '/about') {
             setActiveTab('about');
+        } else if (pathname === '/calculator') {
+            setActiveTab('calculator');
         } else if (pathname === '/') {
             setActiveTab('personal');
         }
@@ -126,8 +129,8 @@ export default function Navbar() {
                                 {Object.keys(NAV_CONFIG).map((tabKey) => {
                                     const isActive = activeTab === tabKey;
                                     const className = `pb-7 pt-1 px-1 font-medium text-sm border-b-[3px] transition-colors ${isActive
-                                        ? 'border-secondary text-secondary'
-                                        : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-900'
+                                        ? 'border-primary text-primary'
+                                        : 'border-transparent text-gray-400 hover:border-gray-300 hover:text-gray-900'
                                         }`;
 
                                     if (['personal', 'business', 'digital', 'investor', 'about'].includes(tabKey)) {
@@ -199,9 +202,13 @@ export default function Navbar() {
                         </nav>
 
                         {/* Action Buttons */}
-                        <div className="flex items-center space-x-4">
+                        <div className="flex items-center space-x-6">
+                            <Link href="/calculator" className="flex items-center gap-2 text-gray-600 hover:text-primary transition-colors font-medium text-sm">
+                                <Calculator className="h-4 w-4" />
+                                Calculator
+                            </Link>
                             <Button variant="primary" className="!px-6 !py-2 text-sm shadow-sm">
-                                Get the app
+                                Download app
                             </Button>
                         </div>
                     </div>

@@ -2,15 +2,19 @@
 
 import Image from 'next/image';
 
-export default function MobileAppPhone() {
+interface MobileAppPhoneProps {
+    className?: string;
+}
+
+export default function MobileAppPhone({ className = '' }: Readonly<MobileAppPhoneProps>) {
   return (
-    <div className="w-[280px] md:w-[300px] lg:w-[320px] relative transition-transform duration-500 hover:scale-[1.02]">    
-        {/* Phone Device Mockup */}
-        <div className="relative bg-[#1a1a2e] rounded-[3rem] p-3 shadow-2xl border-[6px] border-[#2a2a3e]">
+    <div className={`w-[260px] md:w-[280px] lg:w-[300px] relative transition-transform duration-500 hover:scale-[1.02] ${className}`}>    
+        {/* Phone Device Mockup - Updated to NMB Blue */}
+        <div className="relative bg-[#094163] rounded-[3rem] p-3 shadow-2xl border-[6px] border-[#115e8c]">
             {/* Side Buttons */}
-            <div className="absolute top-24 -right-[10px] w-1 h-12 bg-[#2a2a3e] rounded-r-md"></div>
-            <div className="absolute top-24 -left-[10px] w-1 h-8 bg-[#2a2a3e] rounded-l-md"></div>
-            <div className="absolute top-36 -left-[10px] w-1 h-12 bg-[#2a2a3e] rounded-l-md"></div>
+            <div className="absolute top-24 -right-[10px] w-1 h-12 bg-[#115e8c] rounded-r-md"></div>
+            <div className="absolute top-24 -left-[10px] w-1 h-8 bg-[#115e8c] rounded-l-md"></div>
+            <div className="absolute top-36 -left-[10px] w-1 h-12 bg-[#115e8c] rounded-l-md"></div>
 
             <div className="relative bg-white rounded-[2.5rem] overflow-hidden aspect-[9/19.5]">
                 {/* Status Bar Mock */}

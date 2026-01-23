@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Bell } from 'lucide-react';
 import Image from 'next/image';
 import Button from '../buttons/Button';
 import NMBCard from '../cards/NMBCard';
@@ -15,14 +14,15 @@ const SLIDES = [
     {
         title: "Access Key Services Instantly",
         description: "Making it easy for customers to access key services like Accounts, Loans, and Cards.",
-        image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=2576&auto=format&fit=crop"
+        image: "/banner-women.png"
     },
     {
         title: "Sustainability & Innovation",
         description: "Highlighting our commitment to sustainability and continuous innovation.",
-        image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2576&auto=format&fit=crop"
+        image: "/hero-slide-4.png"
     }
 ];
+
 
 export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -49,8 +49,8 @@ export default function Hero() {
           <div className="absolute -bottom-[10%] right-[20%] w-[35%] h-[35%] bg-primary/5 rounded-full blur-[100px]" />
       </div>
 
-      <div className="relative z-10 max-w-[95%] mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-24 lg:pt-20 lg:pb-32">
-        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+      <div className="relative z-10 max-w-[95%] mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16 lg:pt-16 lg:pb-20">
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
           
           {/* Left Column: Text & Slider */}
           <div className="flex-1 w-full max-w-2xl lg:max-w-none space-y-10 lg:pl-12">
@@ -70,13 +70,13 @@ export default function Hero() {
                         Open Account
                     </Button>
                     <Button variant="outline">
-                        Learn More
+                        Contact
                     </Button>
                 </div>
             </div>
 
             {/* Content Slider */}
-            <div className="relative h-24 mt-12 overflow-hidden border-l-4 border-primary pl-6">
+            <div className="relative h-24 mt-12 overflow-hidden border-l-4 border-secondary pl-6">
                  {SLIDES.map((slide, index) => (
                     <div 
                         key={index}
@@ -138,37 +138,16 @@ export default function Hero() {
                             <Image 
                                 src={slide.image}
                                 alt={slide.title}
-                                width={600} 
-                                height={700}
-                                className="object-contain drop-shadow-2xl rounded-tr-[5rem] rounded-bl-[5rem] max-h-full w-auto"
+                                width={800} 
+                                height={900}
+                                className="object-contain drop-shadow-2xl rounded-tr-[5rem] rounded-bl-[5rem] max-h-full w-auto scale-125"
                                 priority={index === 0}
                             />
                         )}
                     </div>
                 ))}
              </div>
-
-             {/* Floating Card 1: Notification */}
-             <div className="absolute top-[20%] -left-4 sm:left-0 bg-white p-4 rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] flex items-center gap-3 animate-float-slow z-20 max-w-[200px]">
-                 <div className="bg-yellow-100 p-2 rounded-full">
-                     <Bell className="w-5 h-5 text-yellow-600" />
-                 </div>
-                 <div>
-                     <p className="text-xs font-bold text-gray-800">Payment Received</p>
-                     <p className="text-[10px] text-gray-500">Just now</p>
-                 </div>
-             </div>
-
-              {/* Floating Card 2: Candidates/Success */}
-             <div className="absolute bottom-[10%] -right-4 sm:right-0 bg-white p-4 rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] animate-float-delayed z-20">
-                 <div className="flex items-center gap-2 mb-2">
-                     <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                     <p className="text-sm font-bold text-gray-800">System Active</p>
-                 </div>
-                 <p className="text-xs text-gray-500">99.9% Uptime</p>
-             </div>
           </div>
-
         </div>
       </div>
     </div>

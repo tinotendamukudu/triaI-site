@@ -1,14 +1,22 @@
 # NMB Website Task List
 
-- [/] **Planning & Configuration**
-    - [ ] Create Implementation Plan <!-- id: 0 -->
-    - [ ] Setup Design System (Colors, Fonts, Tailwind Config) <!-- id: 1 -->
+- [x] **Planning & Configuration**
+    - [x] Create Implementation Plan <!-- id: 0 -->
+    - [x] Setup Design System (Colors, Fonts, Tailwind Config) <!-- id: 1 -->
 
-- [ ] **Core Layout Components**
-    - [ ] Create Mini Task Bar (Top Bar) <!-- id: 2 -->
-    - [ ] Create Main Task Bar (Mega Menu Navigation) <!-- id: 3 -->
-    - [ ] Create Global Footer <!-- id: 4 -->
-    - [ ] Implement Mobile Navigation <!-- id: 5 -->
+- [/] **Core Layout Components**
+    - [x] Create Mini Task Bar (Top Bar) <!-- id: 2 -->
+    - [/] Create Main Task Bar (Mega Menu Navigation) <!-- id: 3 -->
+    - [x] Create Global Footer <!-- id: 4 -->
+    - [/] Implement Mobile Navigation <!-- id: 5 -->
+
+- [x] **Digital Banking Page (New Request)**
+    - [x] Create Page Page Stub (`/digital-banking`) <!-- id: 16 -->
+    - [x] Implement Digital Banking Hero <!-- id: 17 -->
+    - [x] Implement Customize Payments Section (Cards UI) <!-- id: 21 -->
+    - [x] Implement NMBConnect App Section <!-- id: 18 -->
+    - [x] Implement Internet Banking Section <!-- id: 19 -->
+    - [x] Implement USSD Section <!-- id: 20 -->
 
 - [ ] **Homepage Development**
     - [ ] Implement Hero Banner (Rotating visuals) <!-- id: 6 -->

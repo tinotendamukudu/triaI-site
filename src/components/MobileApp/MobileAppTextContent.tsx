@@ -1,32 +1,58 @@
 import React from 'react';
 import Button from '../buttons/Button';
+import { Smartphone, Globe, Hash, ArrowRight } from 'lucide-react';
 
 export default function MobileAppTextContent() {
   return (
     <div className="space-y-8 max-w-xl">
       <div className="space-y-4">
-        <h2 className="text-4xl lg:text-5xl font-extrabold text-[#1a1a2e] leading-[1.1]">
-          Connect with your bank <span className="text-primary relative inline-block">
-            anytime
-            <span className="absolute bottom-1 left-0 w-full h-3 bg-primary/10 -z-10 rounded-sm"></span>
+        <h2 className="text-4xl lg:text-5xl font-bold tracking-tight text-gray-900 leading-[1.4]">
+          Banking at your <br/>
+          <span className="text-secondary relative inline-block">
+            fingertips
           </span>
         </h2>
-        <p className="text-lg text-gray-600 leading-relaxed font-medium">
-          NMBConnect allows you access to your bank anytime and from anywhere. Access your accounts via App, Web, or USSD (*241#).
+        <p className="text-lg text-gray-600 leading-relaxed font-normal">
+          NMBConnect gives you the freedom to bank on your own terms. Whether you prefer an app, a web browser, or USSD, we have you covered.
         </p>
       </div>
 
-      <div className="bg-surface/50 p-8 rounded-2xl border border-blue-50 relative overflow-hidden group hover:border-blue-100 transition-colors duration-300">
-         <div className="absolute top-0 left-0 w-1 h-full bg-primary/20 group-hover:bg-primary transition-colors duration-300"></div>
-         <p className="text-gray-700 italic text-lg leading-relaxed relative z-10">
-            "Choose your preferred banking lifestyle with NMBConnect. Eliminate paper-based transactions and take full control."
-         </p>
-         <div className="absolute -bottom-4 -right-4 text-9xl text-primary/5 font-serif select-none z-0">”</div>
+      {/* Feature Channels */}
+      <div className="grid gap-4">
+          <div className="flex items-center gap-4 p-4 rounded-2xl bg-gray-50 hover:bg-white hover:shadow-md transition-all duration-300 border border-transparent hover:border-gray-100 group">
+              <div className="h-10 w-10 flex items-center justify-center rounded-full bg-white shadow-sm text-secondary group-hover:bg-secondary group-hover:text-white transition-colors">
+                  <Smartphone className="h-5 w-5" />
+              </div>
+              <div>
+                  <h3 className="font-semibold text-gray-900">Mobile App</h3>
+                  <p className="text-sm text-gray-500">Secure banking on iOS & Android.</p>
+              </div>
+          </div>
+
+           <div className="flex items-center gap-4 p-4 rounded-2xl bg-gray-50 hover:bg-white hover:shadow-md transition-all duration-300 border border-transparent hover:border-gray-100 group">
+              <div className="h-10 w-10 flex items-center justify-center rounded-full bg-white shadow-sm text-secondary group-hover:bg-secondary group-hover:text-white transition-colors">
+                  <Globe className="h-5 w-5" />
+              </div>
+              <div>
+                  <h3 className="font-semibold text-gray-900">Internet Banking</h3>
+                  <p className="text-sm text-gray-500">Full desktop experience, anywhere.</p>
+              </div>
+          </div>
+
+           <div className="flex items-center gap-4 p-4 rounded-2xl bg-gray-50 hover:bg-white hover:shadow-md transition-all duration-300 border border-transparent hover:border-gray-100 group">
+              <div className="h-10 w-10 flex items-center justify-center rounded-full bg-white shadow-sm text-secondary group-hover:bg-secondary group-hover:text-white transition-colors">
+                  <Hash className="h-5 w-5" />
+              </div>
+              <div>
+                  <h3 className="font-semibold text-gray-900">USSD *241#</h3>
+                  <p className="text-sm text-gray-500">No data? No problem. Dial *241#.</p>
+              </div>
+          </div>
       </div>
 
-      <div className="pt-2">
-           <Button variant="primary" className="!px-8 !py-4 shadow-lg shadow-primary/20 hover:shadow-primary/30 transform hover:-translate-y-1 transition-all duration-300">
-               Learn More
+      <div className="pt-4 flex items-center gap-4">
+           <Button variant="primary" className="!px-8 !py-3 shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2">
+               Get Started <ArrowRight className="h-4 w-4" />
            </Button>
       </div>
     </div>

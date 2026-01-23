@@ -4,12 +4,14 @@ import MobileAppShowcase from "@/components/MobileApp/MobileAppShowcase";
 import Featured from "@/components/Featured/Featured";
 import Newsroom from "@/components/Newsroom/Newsroom";
 import PersonalBankingPromo from "@/components/Promo/PersonalBankingPromo";
+import CustomizePayments from "@/components/Digital/CustomizePayments";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-white">
       <Hero />
       <MobileAppShowcase />
+      <CustomizePayments />
       
       {/* Quick Services Section */}
       <section className="py-16 bg-gray-50/50">

@@ -1,16 +1,15 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { 
-    Search, 
-    ChevronDown, 
-    ShieldCheck, 
-    Lock, 
-    Wallet, 
-    CreditCard, 
-    Banknote, 
-    Briefcase, 
-    Building2, 
+import {
+    ChevronDown,
+    ShieldCheck,
+    Lock,
+    Wallet,
+    CreditCard,
+    Banknote,
+    Briefcase,
+    Building2,
     Store,
     Smartphone,
     Laptop,
@@ -27,6 +26,15 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import Button from '../buttons/Button';
+import MenuDropdown from './MenuDropdown';
+
+// Define the structure for menu items
+interface MenuItem {
+    title: string;
+    items: { label: string; href: string }[];
+}
+
+// Deleted MENU_ITEMS constant as it is now in MenuDropdown component
 
 // Define the structure for navigation items
 interface NavItemData {
@@ -38,10 +46,10 @@ interface NavItemData {
 // Configuration for different tabs
 const NAV_CONFIG: Record<string, NavItemData[]> = {
     personal: [
-         { id: 'accounts', label: 'Accounts', icon: <Wallet className="h-4 w-4" /> },
-         { id: 'cards', label: 'Cards', icon: <CreditCard className="h-4 w-4" /> },
-         { id: 'loans', label: 'Loans', icon: <Banknote className="h-4 w-4" /> },
-         { id: 'insurance', label: 'Insurance', icon: <ShieldCheck className="h-4 w-4" /> },
+        { id: 'accounts', label: 'Accounts', icon: <Wallet className="h-4 w-4" /> },
+        { id: 'cards', label: 'Cards', icon: <CreditCard className="h-4 w-4" /> },
+        { id: 'loans', label: 'Loans', icon: <Banknote className="h-4 w-4" /> },
+        { id: 'insurance', label: 'Insurance', icon: <ShieldCheck className="h-4 w-4" /> },
     ],
     business: [
         { id: 'sme-banking', label: 'SME Banking', icon: <Briefcase className="h-4 w-4" /> },
@@ -76,112 +84,131 @@ const TAB_LABELS: Record<string, string> = {
 };
 
 export default function Navbar() {
-  const pathname = usePathname();
-  const [activeTab, setActiveTab] = useState<string>('personal');
+    const pathname = usePathname();
+    const [activeTab, setActiveTab] = useState<string>('personal');
 
-  useEffect(() => {
-    if (pathname === '/business') {
-        setActiveTab('business');
-    } else if (pathname === '/') {
-        setActiveTab('personal');
-    }
-  }, [pathname]);
+    useEffect(() => {
+        if (pathname === '/business') {
+            setActiveTab('business');
+        } else if (pathname === '/digital-banking') {
+            setActiveTab('digital');
+        } else if (pathname === '/investor-relations') {
+            setActiveTab('investor');
+        } else if (pathname === '/about') {
+            setActiveTab('about');
+        } else if (pathname === '/') {
+            setActiveTab('personal');
+        }
+    }, [pathname]);
 
-  return (
-    <div className="w-full bg-white font-sans sticky top-0 z-50">
-        {/* Top Bar */}
-        <div className="border-b border-gray-200">
-            <div className="max-w-[95%] mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between items-center h-20">
-                    {/* Left: Logo and Segments */}
-                    <div className="flex items-center gap-8">
-                        {/* Logo */}
-                        <Link href="/" className="flex items-center gap-2 group">
-                             <Image 
-                                src="/logo.png" 
-                                alt="NMB Logo" 
-                                width={120} 
-                                height={40} 
-                                className="h-12 w-auto object-contain"
-                                priority
-                            />
-                        </Link>
+    return (
+        <div className="w-full bg-white font-sans sticky top-0 z-50">
+            {/* Top Bar */}
+            <div className="border-b border-gray-200">
+                <div className="max-w-[95%] mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="flex justify-between items-center h-20">
+                        {/* Left: Logo and Segments */}
+                        <div className="flex items-center gap-8">
+                            {/* Logo */}
+                            <Link href="/" className="flex items-center gap-2 group">
+                                <Image
+                                    src="/logo.png"
+                                    alt="NMB Logo"
+                                    width={120}
+                                    height={40}
+                                    className="h-12 w-auto object-contain"
+                                    priority
+                                />
+                            </Link>
 
-                        {/* Tabs */}
-                        <div className="hidden lg:flex h-20 items-end space-x-8 pb-0">
-                            {Object.keys(NAV_CONFIG).map((tabKey) => {
-                                const isActive = activeTab === tabKey;
-                                const className = `pb-7 pt-1 px-1 font-medium text-sm border-b-[3px] transition-colors ${
-                                    isActive
-                                    ? 'border-primary text-primary' 
-                                    : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-900'
-                                }`;
+                            {/* Tabs */}
+                            <div className="hidden lg:flex h-20 items-end space-x-8 pb-0">
+                                {Object.keys(NAV_CONFIG).map((tabKey) => {
+                                    const isActive = activeTab === tabKey;
+                                    const className = `pb-7 pt-1 px-1 font-medium text-sm border-b-[3px] transition-colors ${isActive
+                                        ? 'border-secondary text-secondary'
+                                        : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-900'
+                                        }`;
 
-                                if (tabKey === 'personal' || tabKey === 'business') {
+                                    if (['personal', 'business', 'digital', 'investor', 'about'].includes(tabKey)) {
+                                        let href = '/';
+                                        if (tabKey === 'business') href = '/business';
+                                        else if (tabKey === 'digital') href = '/digital-banking';
+                                        else if (tabKey === 'investor') href = '/investor-relations';
+                                        else if (tabKey === 'about') href = '/about';
+
+                                        return (
+                                            <Link
+                                                key={tabKey}
+                                                href={href}
+                                                onClick={() => setActiveTab(tabKey)}
+                                                className={className}
+                                            >
+                                                {TAB_LABELS[tabKey] || tabKey.charAt(0).toUpperCase() + tabKey.slice(1)}
+                                            </Link>
+                                        );
+                                    }
+
                                     return (
-                                        <Link 
+                                        <button
                                             key={tabKey}
-                                            href={tabKey === 'business' ? '/business' : '/'}
                                             onClick={() => setActiveTab(tabKey)}
                                             className={className}
                                         >
                                             {TAB_LABELS[tabKey] || tabKey.charAt(0).toUpperCase() + tabKey.slice(1)}
-                                        </Link>
+                                        </button>
                                     );
-                                }
-
-                                return (
-                                    <button 
-                                        key={tabKey}
-                                        onClick={() => setActiveTab(tabKey)}
-                                        className={className}
-                                    >
-                                        {TAB_LABELS[tabKey] || tabKey.charAt(0).toUpperCase() + tabKey.slice(1)}
-                                    </button>
-                                );
-                            })}
-                        </div>
-                    </div>         
-
-                    {/* Right: Menu & Online Banking */}
-                    <div className="flex items-center space-x-8">
-                        <button className="flex items-center text-gray-600 font-medium gap-1 text-sm">
-                            Menu <ChevronDown className="h-4 w-4" />
-                        </button>
-                        <Link href="#" className="flex items-center gap-2 text-gray-900 font-medium">
-                            <Lock className="h-5 w-5 text-primary" />
-                            <div className="flex flex-col leading-none">
-                                <span className="text-sm font-semibold">Online Banking</span>
-                                <span className="text-[10px] text-gray-500 uppercase tracking-wide">Sign in</span>
+                                })}
                             </div>
-                        </Link>
+                        </div>
+
+                        {/* Right: Menu & Online Banking */}
+                        <div className="flex items-center space-x-8">
+                            {/* Menu with Dropdown */}
+                            <div className="relative group h-full flex items-center">
+                                <button className="flex items-center text-gray-600 font-medium gap-1 text-sm py-4 outline-none group-hover:text-primary transition-colors">
+                                    More <ChevronDown className="h-4 w-4 transition-transform duration-300 group-hover:rotate-180" />
+                                </button>
+                                {/* Dropdown Container with Hover Bridge */}
+                                <div className="absolute top-14 right-0 pt-4 invisible opacity-0 translate-y-2 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out z-[100]">
+                                    <MenuDropdown />
+                                </div>
+                            </div>
+
+                            <Link href="#" className="flex items-center gap-2 text-gray-900 font-medium">
+                                <Lock className="h-5 w-5 text-primary" />
+                                <div className="flex flex-col leading-none">
+                                    <span className="text-sm font-semibold">Online Banking</span>
+                                    <span className="text-[10px] text-gray-500 uppercase tracking-wide">Sign in</span>
+                                </div>
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Bottom Bar - Navigation Items */}
+            <div className="bg-gray-50 border-b border-gray-200">
+                <div className="max-w-[95%] mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="flex justify-between items-center py-2">
+                        {/* Dynamic Navigation Links based on activeTab */}
+                        <nav className="hidden lg:flex space-x-12">
+                            {NAV_CONFIG[activeTab]?.map((item) => (
+                                <NavItem key={item.id} icon={item.icon} label={item.label} />
+                            ))}
+                        </nav>
+
+                        {/* Action Buttons */}
+                        <div className="flex items-center space-x-4">
+                            <Button variant="primary" className="!px-6 !py-2 text-sm shadow-sm">
+                                Get the app
+                            </Button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        {/* Bottom Bar - Navigation Items */}
-        <div className="bg-gray-50 border-b border-gray-200">
-             <div className="max-w-[95%] mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between items-center py-2">
-                    {/* Dynamic Navigation Links based on activeTab */}
-                    <nav className="hidden lg:flex space-x-12">
-                        {NAV_CONFIG[activeTab]?.map((item) => (
-                            <NavItem key={item.id} icon={item.icon} label={item.label} />
-                        ))}
-                    </nav>
-
-                    {/* Action Buttons */}
-                    <div className="flex items-center space-x-4">
-                        <Button variant="primary" className="!px-6 !py-2 text-sm shadow-sm">
-                            Get the app
-                        </Button>
-                    </div>
-                </div>
-             </div>
-        </div>
-    </div>
-  );
+    );
 }
 
 function NavItem({ icon, label }: Readonly<{ icon: React.ReactNode; label: string }>) {

@@ -25,7 +25,7 @@ export default function MarketData() {
     }, []);
 
     return (
-        <section className="py-20 bg-white relative overflow-hidden">
+        <section className="py-20 bg-white relative overflow-hidden font-sans">
              {/* Background Decoration */}
              <div className="absolute top-0 right-0 w-1/2 h-full bg-gray-50/50 skew-x-12 transform origin-top-right -z-10" />
 

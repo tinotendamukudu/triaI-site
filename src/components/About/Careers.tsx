@@ -5,7 +5,7 @@ import { ArrowRight, CheckCircle2 } from 'lucide-react';
 
 export default function Careers() {
     return (
-        <section className="py-24 bg-primary text-white relative overflow-hidden">
+        <section className="py-24 bg-primary text-white relative overflow-hidden font-sans">
              {/* Decorative Background */}
              <div className="absolute top-0 right-0 w-1/2 h-full bg-blue-800/20 skew-x-12 transform origin-bottom-right"></div>
              <div className="absolute bottom-0 left-0 w-1/3 h-1/2 bg-secondary/10 rounded-tr-full"></div>

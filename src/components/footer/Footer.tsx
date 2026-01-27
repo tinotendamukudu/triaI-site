@@ -3,7 +3,7 @@ import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from 'react-icons/f
 
 export default function Footer() {
   return (
-    <footer className="bg-white border-t border-gray-200 pt-12 pb-8">
+    <footer className="bg-white border-t border-gray-200 pt-12 pb-8 font-sans">
       <div className="max-w-[95%] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* App Download Section */}
@@ -13,14 +13,14 @@ export default function Footer() {
           </h2>
           <div className="flex gap-4">
             {/* Store Badges */}
-            <Link href="#" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+            <Link href="https://play.google.com/store/search?q=nmb+connect+app&c=apps&hl=en-US" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
                 <img 
                     src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" 
                     alt="Download on the App Store" 
                     className="h-10 w-auto" 
                 />
             </Link>
-            <Link href="#" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+            <Link href="https://play.google.com/store/search?q=nmb+connect+app&c=apps&hl=en-US" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
                 <img 
                     src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" 
                     alt="Get it on Google Play" 
@@ -31,8 +31,7 @@ export default function Footer() {
         </div>
 
         {/* Main Footer Links Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
-            
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">         
           {/* Column 1: Quick Links */}
           <div>
             <h3 className="font-bold text-gray-900 mb-6 text-lg">Quick Links</h3>
@@ -78,16 +77,16 @@ export default function Footer() {
              <div>
                 <h3 className="font-bold text-gray-900 mb-6 text-lg">Stay Connected</h3>
                 <div className="flex gap-4">
-                    <Link href="#" className="bg-blue-600 text-white p-2.5 rounded-full hover:bg-blue-700 transition-transform hover:-translate-y-1">
+                    <Link href="#" className="bg-primary text-white p-2.5 rounded-full hover:bg-secondary hover:text-primary transition-all hover:-translate-y-1">
                         <FaFacebookF size={18} />
                     </Link>
-                    <Link href="#" className="bg-black text-white p-2.5 rounded-full hover:bg-gray-800 transition-transform hover:-translate-y-1">
+                    <Link href="#" className="bg-primary text-white p-2.5 rounded-full hover:bg-secondary hover:text-primary transition-all hover:-translate-y-1">
                         <FaTwitter size={18} />
                     </Link>
-                    <Link href="#" className="bg-blue-800 text-white p-2.5 rounded-full hover:bg-blue-900 transition-transform hover:-translate-y-1">
+                    <Link href="#" className="bg-primary text-white p-2.5 rounded-full hover:bg-secondary hover:text-primary transition-all hover:-translate-y-1">
                         <FaLinkedinIn size={18} />
                     </Link>
-                    <Link href="#" className="bg-pink-600 text-white p-2.5 rounded-full hover:bg-pink-700 transition-transform hover:-translate-y-1">
+                    <Link href="#" className="bg-primary text-white p-2.5 rounded-full hover:bg-secondary hover:text-primary transition-all hover:-translate-y-1">
                         <FaInstagram size={18} />
                     </Link>
                 </div>

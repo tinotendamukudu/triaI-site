@@ -6,7 +6,7 @@ import { Building2, Globe, ShieldCheck, PieChart } from 'lucide-react';
 
 export default function CorporateSolutions() {
     return (
-        <section id="corporate-solutions" className="py-24 bg-primary text-white overflow-hidden relative">
+        <section id="corporate-solutions" className="py-24 bg-primary text-white overflow-hidden relative font-sans">
             {/* Abstract Background Design */}
             <div className="absolute top-0 right-0 w-[50%] h-full bg-white/5 skew-x-12 transform origin-top-right"></div>
             <div className="absolute bottom-0 left-0 w-[30%] h-[70%] bg-secondary/10 rounded-tr-[100px]"></div>

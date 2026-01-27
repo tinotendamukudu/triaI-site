@@ -61,7 +61,7 @@ const MortgageCalculator = () => {
   const { maxLoan, monthlyPayment } = calculateMortgage();
 
   return (
-    <div className="grid lg:grid-cols-12 gap-8 items-start animate-fadeIn">
+    <div className="grid lg:grid-cols-12 gap-8 items-stretch animate-fadeIn">
       {/* Input Section */}
       <div className="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-10 border border-gray-300/50 relative z-10">
         <div className="space-y-10">
@@ -173,7 +173,7 @@ const VehicleCalculator = () => {
     const premium = calculatePremium();
   
     return (
-      <div className="grid lg:grid-cols-12 gap-8 items-start animate-fadeIn">
+      <div className="grid lg:grid-cols-12 gap-8 items-stretch animate-fadeIn">
         {/* Input Section */}
         <div className="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-10 border border-gray-300/50 relative z-10">
           <div className="space-y-10">

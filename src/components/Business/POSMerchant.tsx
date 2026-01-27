@@ -8,7 +8,7 @@ import { Store, CreditCard, Smartphone } from 'lucide-react';
 
 export default function POSMerchant() {
     return (
-        <section id="pos-merchant" className="py-24 bg-gray-50 overflow-hidden">
+        <section id="pos-merchant" className="py-24 bg-gray-50 overflow-hidden font-sans">
             <div className="max-w-[95%] mx-auto px-4 sm:px-6 lg:px-8">
                 
                 {/* Header */}

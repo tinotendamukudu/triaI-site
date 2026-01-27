@@ -26,7 +26,7 @@ const LEADERS = [
 
 export default function Leadership() {
     return (
-        <section className="py-24 bg-surface relative overflow-hidden">
+        <section className="py-24 bg-surface relative overflow-hidden font-sans">
              {/* Background Pattern */}
              <div className="absolute inset-0 opacity-[0.05]" 
                   style={{ backgroundImage: 'radial-gradient(circle at 10px 10px, #1e3a8a 2px, transparent 0)', backgroundSize: '40px 40px' }}>

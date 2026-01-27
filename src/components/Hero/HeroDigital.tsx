@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function HeroDigital() {
     return (
-        <div className="relative bg-white">
+        <div className="relative bg-white font-sans">
             {/* Main Hero Content */}
             <div className="relative isolate overflow-hidden min-h-[90vh] flex items-center">
                 {/* Background Image with Overlay - Matching the "High Impact" style */}

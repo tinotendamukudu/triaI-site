@@ -15,7 +15,6 @@ export default function MobileAppPhone({ className = '' }: Readonly<MobileAppPho
             <div className="absolute top-24 -right-[10px] w-1 h-12 bg-[#115e8c] rounded-r-md"></div>
             <div className="absolute top-24 -left-[10px] w-1 h-8 bg-[#115e8c] rounded-l-md"></div>
             <div className="absolute top-36 -left-[10px] w-1 h-12 bg-[#115e8c] rounded-l-md"></div>
-
             <div className="relative bg-white rounded-[2.5rem] overflow-hidden aspect-[9/19.5]">
                 {/* Status Bar Mock */}
                 <div className="absolute top-0 w-full h-10 bg-black/40 backdrop-blur-sm z-20 flex justify-between items-center px-6">

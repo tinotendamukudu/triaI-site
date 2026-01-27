@@ -4,7 +4,7 @@ import { ArrowRight, Wallet, CreditCard, PiggyBank, Shield } from 'lucide-react'
 
 export default function PersonalBankingPromo() {
   return (
-    <section className="relative py-24 lg:py-32 overflow-hidden">
+    <section className="relative py-24 lg:py-32 overflow-hidden font-sans">
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed"
@@ -21,7 +21,7 @@ export default function PersonalBankingPromo() {
             Designed for You
         </span>
         
-        <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold mb-8 tracking-tighter">
+        <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold mb-8 tracking-tighter leading-tight">
           Banking that fits your <br className="hidden md:block"/> 
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-white">lifestyle.</span>
         </h2>

@@ -6,7 +6,7 @@ import { Laptop, ShieldCheck, Zap, Globe, ArrowRight } from 'lucide-react';
 
 export default function InternetBanking() {
     return (
-        <section id="internet-banking" className="py-24 bg-surface relative overflow-hidden">
+        <section id="internet-banking" className="py-24 bg-surface relative overflow-hidden font-sans">
             {/* Background Decorations */}
             <div className="absolute top-0 right-0 w-1/2 h-full bg-blue-50/50 -skew-x-12 transform origin-top-right -z-10" />
             

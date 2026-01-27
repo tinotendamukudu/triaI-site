@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 export default function Hero() {
   return (
-    <div className="relative bg-white">
+    <div className="relative bg-white font-sans">
       {/* Main Hero Content */}
       <div className="relative isolate overflow-hidden">
         {/* Background Image with Overlay */}

@@ -5,7 +5,7 @@ import Button from '../buttons/Button';
 
 export default function ContactSection() {
     return (
-        <section className="py-24 bg-gray-50">
+        <section className="py-24 bg-gray-50 font-sans">
             <div className="max-w-7xl mx-auto px-6 lg:px-8">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 rounded-[3rem] bg-white text-gray-900 p-10 lg:p-16 border border-gray-300/50 overflow-hidden relative">
                     

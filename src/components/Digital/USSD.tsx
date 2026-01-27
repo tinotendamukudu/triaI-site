@@ -4,7 +4,7 @@ import { Phone, Smartphone } from 'lucide-react';
 
 export default function USSD() {
     return (
-        <section className="py-24 bg-primary text-white relative overflow-hidden">
+        <section className="py-24 bg-primary text-white relative overflow-hidden font-sans">
              {/* Pattern Background */}
              <div className="absolute inset-0 opacity-10" 
                   style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '32px 32px' }}>

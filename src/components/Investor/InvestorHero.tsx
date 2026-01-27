@@ -131,7 +131,7 @@ export default function InvestorHero() {
                      </div>
                      <div>
                          <p className="text-sm text-gray-500 font-medium">Stock Price</p>
-                         <p className="text-2xl font-bold text-primary">TZS 3,450</p>
+                         <p className="text-2xl font-bold text-primary">ZWG 3,450</p>
                      </div>
                  </div>
                  <div className="w-full bg-gray-100 h-1.5 rounded-full overflow-hidden">

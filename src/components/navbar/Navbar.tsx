@@ -21,7 +21,8 @@ import {
     Users,
     Award,
     MessageSquare,
-    Calculator
+    Calculator,
+    X
 } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -42,6 +43,7 @@ interface NavItemData {
     id: string;
     label: string;
     icon: React.ReactNode;
+    href?: string;
 }
 
 // Configuration for different tabs
@@ -59,7 +61,7 @@ const NAV_CONFIG: Record<string, NavItemData[]> = {
     ],
     digital: [
         { id: 'nmbconnect-app', label: 'NMBConnect App', icon: <Smartphone className="h-4 w-4" /> },
-        { id: 'internet-banking', label: 'Internet Banking', icon: <Laptop className="h-4 w-4" /> },
+        { id: 'internet-banking', label: 'Internet Banking', icon: <Laptop className="h-4 w-4" />, href: 'https://www.nmbconnectonline.co.zw/nmbconnectonline/' },
         { id: 'ussd', label: 'USSD', icon: <Phone className="h-4 w-4" /> },
     ],
     investor: [
@@ -87,6 +89,7 @@ const TAB_LABELS: Record<string, string> = {
 export default function Navbar() {
     const pathname = usePathname();
     const [activeTab, setActiveTab] = useState<string>('personal');
+    const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
 
     useEffect(() => {
         if (pathname === '/business') {
@@ -178,7 +181,7 @@ export default function Navbar() {
                                 </div>
                             </div>
 
-                            <Link href="#" className="flex items-center gap-2 text-gray-900 font-medium">
+                            <Link href="https://www.nmbconnectonline.co.zw/nmbconnectonline/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-gray-900 font-medium hover:text-primary transition-colors">
                                 <Lock className="h-5 w-5 text-primary" />
                                 <div className="flex flex-col leading-none">
                                     <span className="text-sm font-semibold">Online Banking</span>
@@ -197,7 +200,7 @@ export default function Navbar() {
                         {/* Dynamic Navigation Links based on activeTab */}
                         <nav className="hidden lg:flex space-x-12">
                             {NAV_CONFIG[activeTab]?.map((item) => (
-                                <NavItem key={item.id} icon={item.icon} label={item.label} />
+                                <NavItem key={item.id} icon={item.icon} label={item.label} href={item.href} />
                             ))}
                         </nav>
 
@@ -207,20 +210,69 @@ export default function Navbar() {
                                 <Calculator className="h-4 w-4" />
                                 Calculator
                             </Link>
-                            <Button variant="primary" className="!px-6 !py-2 text-sm shadow-sm">
+                            <Button 
+                                variant="primary" 
+                                className="!px-6 !py-2 text-sm shadow-sm"
+                                onClick={() => setIsDownloadModalOpen(true)}
+                            >
                                 Download app
                             </Button>
                         </div>
                     </div>
                 </div>
             </div>
+
+            {/* Download App Modal */}
+            {isDownloadModalOpen && (
+                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm" onClick={() => setIsDownloadModalOpen(false)}>
+                    <div className="bg-white rounded-xl shadow-2xl w-full max-w-md p-6 relative animate-in fade-in zoom-in duration-200" onClick={(e) => e.stopPropagation()}>
+                        <button 
+                            onClick={() => setIsDownloadModalOpen(false)}
+                            className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 p-1 bg-gray-100 rounded-full transition-colors"
+                        >
+                            <X className="h-5 w-5" />
+                        </button>
+                        
+                        <div className="text-center mb-8 pt-2">
+                             <h3 className="text-xl font-bold text-gray-900 mb-2">Download NMBConnect</h3>
+                             <p className="text-gray-600 text-sm">Choose your platform to get started</p>
+                        </div>
+
+                        <div className="space-y-4">
+                            <Link href="https://play.google.com/store/search?q=nmb+connect+app&c=apps&hl=en-US" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center p-4 border border-gray-200 rounded-lg hover:border-primary hover:bg-gray-50 transition-all group">
+                                <div className="flex items-center gap-4">
+                                     <img 
+                                        src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" 
+                                        alt="Get it on Google Play" 
+                                        className="h-12 w-auto" 
+                                     />
+                                </div>
+                            </Link>
+
+                             <Link href="https://play.google.com/store/search?q=nmb+connect+app&c=apps&hl=en-US" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center p-4 border border-gray-200 rounded-lg hover:border-primary hover:bg-gray-50 transition-all group">
+                                <div className="flex items-center gap-4">
+                                     <img 
+                                        src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" 
+                                        alt="Download on the App Store" 
+                                        className="h-12 w-auto" 
+                                     />
+                                </div>
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
 
-function NavItem({ icon, label }: Readonly<{ icon: React.ReactNode; label: string }>) {
+function NavItem({ icon, label, href = '#' }: Readonly<{ icon: React.ReactNode; label: string; href?: string }>) {
     return (
-        <Link href="#" className="flex items-center gap-2 text-gray-600 hover:text-primary transition-colors">
+        <Link 
+            href={href} 
+            className="flex items-center gap-2 text-gray-600 hover:text-primary transition-colors"
+            {...(href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+        >
             <span className="text-gray-500">{icon}</span>
             <span className="font-medium text-sm">{label}</span>
         </Link>

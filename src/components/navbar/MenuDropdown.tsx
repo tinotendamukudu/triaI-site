@@ -8,7 +8,7 @@ interface MenuItem {
     items: { label: string; href: string; external?: boolean }[];
 }
 
-const MENU_ITEMS: MenuItem[] = [
+export const MENU_ITEMS: MenuItem[] = [
     {
         title: "NMB Properties",
         items: [{ label: "Visit NMB Properties Site", href: "#", external: true }]

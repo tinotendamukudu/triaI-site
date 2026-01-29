@@ -1,7 +1,17 @@
+'use client';
+
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from 'react-icons/fa';
+import HoldingsFooter from './HoldingsFooter';
 
 export default function Footer() {
+  const pathname = usePathname();
+
+  if (pathname === '/') {
+    return <HoldingsFooter />;
+  }
+
   return (
     <footer className="bg-white border-t border-gray-200 pt-12 pb-8 font-sans">
       <div className="max-w-[95%] mx-auto px-4 sm:px-6 lg:px-8">

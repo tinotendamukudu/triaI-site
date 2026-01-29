@@ -24,8 +24,7 @@ export default function PersonalBankingPromo() {
         <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold mb-8 tracking-tighter leading-tight">
           Banking that fits your <br className="hidden md:block"/> 
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-white">lifestyle.</span>
-        </h2>
-        
+        </h2>     
         <p className="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto mb-16 leading-relaxed font-light">
            Whether you are saving for a dream home, managing daily expenses, or planning for retirement, 
            NMB Personal Banking offers world-class financial solutions tailored to your unique journey.

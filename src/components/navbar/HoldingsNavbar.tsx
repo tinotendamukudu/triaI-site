@@ -9,15 +9,15 @@ const HOLDINGS_LINKS = [
     { label: 'About Us', href: '/about' },
     { label: 'Investor Relations', href: '/investor-relations' },
     { label: 'Sustainability', href: '#' },
-    { label: 'Media Centre', href: '/newsroom' },
-    { label: 'Contact', href: '/contact-us' },
+    { label: 'Media Centre', href: '#' },
+    { label: 'Contact', href: '/about#contact-us' },
 ];
 
 export default function HoldingsNavbar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     return (
-        <div className="w-full bg-white font-sans sticky top-0 z-50 border-b border-gray-300">
+        <div className="w-full bg-white font-sans sticky top-0 z-50 border-b border-gray-300/20">
             <div className="max-w-[95%] mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-20">
                     {/* Logo */}
@@ -42,28 +42,19 @@ export default function HoldingsNavbar() {
                             <Link 
                                 key={link.label}
                                 href={link.href} 
-                                className="text-sm font-medium text-gray-600 hover:text-[#002D59] transition-colors relative group"
+                                className="text-sm font-medium text-gray-400 hover:text-primary transition-colors relative group"
                             >
                                 {link.label}
-                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all group-hover:w-full"></span>
+                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary transition-all group-hover:w-full"></span>
                             </Link>
                         ))}
                     </nav>
 
-                    {/* Desktop Action */}
-                    <div className="hidden lg:flex items-center">
-                         <Link 
-                            href="/banking-for-me" 
-                            className="flex items-center gap-2 bg-[#002D59] text-white px-5 py-2.5 rounded text-sm font-bold hover:bg-[#001f3f] transition-colors shadow-sm hover:shadow"
-                         >
-                            NMB Bank <ChevronRight className="w-4 h-4" />
-                         </Link>
-                    </div>
-
+                    {/* Desktop Action - REMOVED */}
                     {/* Mobile Menu Toggle */}
                      <button 
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                        className="lg:hidden p-2 text-gray-600 hover:text-[#002D59]"
+                        className="lg:hidden p-2 text-gray-400 hover:text-primary"
                     >
                         {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
                     </button>
@@ -84,13 +75,6 @@ export default function HoldingsNavbar() {
                                 {link.label}
                             </Link>
                         ))}
-                         <Link 
-                            href="/banking-for-me" 
-                            className="flex items-center justify-center gap-2 bg-[#002D59] text-white px-5 py-3 rounded text-sm font-bold mt-4"
-                            onClick={() => setIsMobileMenuOpen(false)}
-                         >
-                            Go to NMB Bank <ChevronRight className="w-4 h-4" />
-                         </Link>
                     </div>
                 </div>
             )}

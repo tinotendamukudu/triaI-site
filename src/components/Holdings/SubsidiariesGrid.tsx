@@ -9,11 +9,11 @@ const SUBSIDIARIES = [
         id: 'bank',
         name: 'NMB Bank',
         description: 'Award-winning banking excellence for personal, business, and corporate clients.',
-        image: 'https://images.unsplash.com/photo-1601597111158-2fceff2926d6?q=80&w=1000&auto=format&fit=crop', // Modern banking hall/digital abstract
+        image: '/building.jpeg',
         href: '/banking-for-me',
         status: 'Active',
-        accent: 'bg-[#D4AF37]', // Gold
-        hoverColor: 'group-hover:text-[#D4AF37]'
+        accent: 'bg-secondary', // Gold
+        hoverColor: 'group-hover:text-secondary'
     },
     {
         id: 'xplug',
@@ -32,19 +32,19 @@ const SUBSIDIARIES = [
         image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1000&auto=format&fit=crop', // Modern architecture
         href: 'https://nmbproperties.co.zw/',
         status: 'Active',
-        accent: 'bg-[#002D59]', // Blue
-        hoverColor: 'group-hover:text-[#002D59]'
+        accent: 'bg-primary', // Blue
+        hoverColor: 'group-hover:text-white'
     }
 ];
 
 export default function SubsidiariesGrid() {
     return (
-        <section className="py-20 bg-white">
+        <section className="py-20 bg-gray-50 font-sans">
             <div className="max-w-[95%] mx-auto px-4">
                 <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
                     <div>
-                        <span className="text-[#D4AF37] font-bold tracking-widest text-sm uppercase mb-2 block">Our Structure</span>
-                        <h2 className="text-4xl md:text-5xl font-bold text-[#002D59]">A Diversified Portfolio</h2>
+                        <span className="text-secondary font-bold tracking-widest text-sm uppercase mb-2 block">Our Structure</span>
+                        <h2 className="text-4xl md:text-4xl font-bold text-primary">A Diversified Portfolio</h2>
                     </div>
                 </div>
 

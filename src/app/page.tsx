@@ -9,7 +9,6 @@ export default function HoldingsHome() {
     <main className="min-h-screen bg-white">
       {/* Group Hero */}
       <HoldingsHero />
-
       {/* Subsidiaries Grid */}
       <SubsidiariesGrid />
 

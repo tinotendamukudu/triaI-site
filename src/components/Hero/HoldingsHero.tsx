@@ -5,12 +5,15 @@ import HoldingsTitle from './HoldingsTitle';
 
 export default function HoldingsHero() {
     return (
-        <section className="relative h-[95vh] min-h-[800px] flex items-center overflow-hidden bg-surface font-sans">
+        <section className="relative h-[95vh] min-h-[800px] flex items-center overflow-hidden bg-white font-sans">
             {/* Background Texture & Gradients */}
             <div className="absolute inset-0 z-0">
                 {/* Subtle Grid Pattern for Texture */}
-                <div className="absolute inset-0 opacity-[0.03]"
-                    style={{ backgroundImage: 'radial-gradient(var(--color-primary) 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
+                <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
+                    style={{ 
+                        backgroundImage: 'linear-gradient(to right, var(--color-primary) 1px, transparent 1px), linear-gradient(to bottom, var(--color-primary) 1px, transparent 1px)', 
+                        backgroundSize: '50px 50px' 
+                    }}>
                 </div>
 
                 {/* Soft Gradient Blobs for Smoothness */}
@@ -22,7 +25,6 @@ export default function HoldingsHero() {
             <div className="relative z-10 max-w-[98%] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-center">
                 {/* Left Content */}
                 <div className="text-gray-900 space-y-8 animate-in slide-in-from-left-4 duration-700 fade-in pl-4 lg:pl-12">
-
                     <HoldingsTitle />
 
                     <p className="text-lg md:text-xl text-gray-600 max-w-xl font-light leading-relaxed">
@@ -31,7 +33,7 @@ export default function HoldingsHero() {
                     <div className="flex flex-col sm:flex-row gap-4 pt-4">
                         <Link
                             href="/investor-relations"
-                            className="px-8 py-4 bg-primary text-white font-bold rounded-full hover:bg-primary/90 transition-all transform hover:-translate-y-1 shadow-lg shadow-primary/20 flex items-center justify-center gap-2"
+                            className="px-8 py-4 bg-primary text-white font-bold rounded-full hover:bg-primary/90 transition-all transform hover:-translate-y-1 shadow-sm shadow-primary/20 flex items-center justify-center gap-2"
                         >
                             Investor Relations <ArrowRight className="w-5 h-5" />
                         </Link>
@@ -46,8 +48,8 @@ export default function HoldingsHero() {
                 {/* Right Visual - Vertical Scroll Carousel */}
                 <div className="hidden lg:grid grid-cols-2 gap-6 relative h-[800px] overflow-hidden">
                     {/* Gradient Overlay for Fade Effect - Top and Bottom */}
-                    <div className="absolute top-0 left-0 right-0 z-20 pointer-events-none bg-gradient-to-b from-surface to-transparent h-32"></div>
-                    <div className="absolute bottom-0 left-0 right-0 z-20 pointer-events-none bg-gradient-to-t from-surface to-transparent h-32"></div>
+                    <div className="absolute top-0 left-0 right-0 z-20 pointer-events-none bg-gradient-to-b from-white to-transparent h-32"></div>
+                    <div className="absolute bottom-0 left-0 right-0 z-20 pointer-events-none bg-gradient-to-t from-white to-transparent h-32"></div>
 
                     {/* Column 1 - Scroll Up */}
                     <div className="flex flex-col animate-scroll-up will-change-transform" style={{ backfaceVisibility: 'hidden' }}>

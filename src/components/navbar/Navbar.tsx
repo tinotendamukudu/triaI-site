@@ -131,8 +131,10 @@ export default function Navbar() {
         return '/';
     };
 
-    // If on the root path, render the Holdings specific Navbar
-    if (pathname === '/') {
+    // If on the root path or explicit Holdings pages, render the Holdings specific Navbar
+    const isHoldingsPage = pathname === '/' || pathname === '/about' || pathname === '/investor-relations';
+    
+    if (isHoldingsPage) {
         return <HoldingsNavbar />;
     }
 
